@@ -1,6 +1,6 @@
 {
   "name": "@kyaulabs/deepseek-websearch",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "MCP server providing web search via DeepSeek's native web_search API",
   "license": "MIT",
   "author": "kyau <git@kyaulabs.com>",
