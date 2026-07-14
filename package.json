@@ -1,0 +1,59 @@
+{
+  "name": "@kyaulabs/deepseek-websearch",
+  "version": "1.0.0",
+  "description": "MCP server providing web search via DeepSeek's native web_search API",
+  "license": "MIT",
+  "author": "kyau <git@kyaulabs.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kyaulabs/deepseek-websearch-mcp.git"
+  },
+  "homepage": "https://github.com/kyaulabs/deepseek-websearch-mcp#readme",
+  "bugs": {
+    "url": "https://github.com/kyaulabs/deepseek-websearch-mcp/issues"
+  },
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "model-context-protocol",
+    "web-search",
+    "deepseek",
+    "ai-tools",
+    "opencode"
+  ],
+  "type": "module",
+  "bin": {
+    "deepseek-websearch": "./dist/index.js"
+  },
+  "exports": {
+    ".": "./dist/index.js",
+    "./search": "./dist/search.js"
+  },
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/index.ts",
+    "check": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:integration": "vitest run --config vitest.integration.config.ts",
+    "prepublishOnly": "npm run build && npm run test"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.22.0",
+    "typescript": "^5.8.0",
+    "vitest": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
