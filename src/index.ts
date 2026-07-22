@@ -6,6 +6,8 @@
  * @module
  */
 
+import { fileURLToPath } from "node:url";
+import { realpathSync } from "node:fs";
 import { Server } from "@modelcontextprotocol/sdk/server/index.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import {
@@ -99,8 +101,11 @@ async function main(): Promise<void> {
 }
 
 // Run only when executed directly (not when imported for testing)
-const isDirectRun = process.argv[1]?.endsWith("index.ts") ||
-    process.argv[1]?.endsWith("index.js");
+//const isDirectRun = process.argv[1]?.endsWith("index.ts") ||
+    //process.argv[1]?.endsWith("index.js");
+const currentScript = realpathSync(fileURLToPath(import.meta.url));
+const isDirectRun = process.argv[1] && realpathSync(process.argv[1]) === currentScript;
+
 if (isDirectRun) {
     main().catch((error) => {
         process.stderr.write(`Fatal error: ${error instanceof Error ? error.message : String(error)}\n`);
